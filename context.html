@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Context — Smart Task Manager</title>
+    <meta name="description" content="Context is a native Apple-ecosystem productivity app that surfaces the right tasks based on location, time, and energy.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+    <style>
+        *{margin:0;padding:0;box-sizing:border-box}
+        :root{--primary:#00f0ff;--secondary:#ff00e5;--accent:#7c3aed;--dark:#0a0a0f;--darker:#050508}
+        body{font-family:'Inter',sans-serif;background:var(--darker);color:#fff;min-height:100vh;overflow-x:hidden}
+        .bg-container{position:fixed;top:0;left:0;width:100%;height:100%;z-index:-1;overflow:hidden}
+        .grid-overlay{position:absolute;top:0;left:0;width:100%;height:100%;background-image:linear-gradient(rgba(0,240,255,0.03) 1px,transparent 1px),linear-gradient(90deg,rgba(0,240,255,0.03) 1px,transparent 1px);background-size:50px 50px;animation:gridMove 20s linear infinite}
+        @keyframes gridMove{0%{transform:perspective(500px) rotateX(60deg) translateY(0)}100%{transform:perspective(500px) rotateX(60deg) translateY(50px)}}
+        .glow-orb{position:absolute;border-radius:50%;filter:blur(80px);opacity:0.4;animation:float 8s ease-in-out infinite}
+        .orb-1{width:400px;height:400px;background:var(--primary);top:10%;left:10%;animation-delay:0s}
+        .orb-2{width:300px;height:300px;background:var(--secondary);top:60%;right:10%;animation-delay:-3s}
+        .orb-3{width:250px;height:250px;background:var(--accent);bottom:10%;left:30%;animation-delay:-5s}
+        @keyframes float{0%,100%{transform:translate(0,0) scale(1)}33%{transform:translate(30px,-30px) scale(1.1)}66%{transform:translate(-20px,20px) scale(0.9)}}
+        .container{max-width:1100px;margin:0 auto;padding:2rem;position:relative;z-index:1}
+        header{text-align:center;padding:3rem 0 2rem}
+        .headline{font-family:'Space Grotesk',sans-serif;font-size:clamp(2rem,5vw,3.5rem);font-weight:700;line-height:1.2;margin-bottom:1rem;background:linear-gradient(135deg,#fff 0%,var(--primary) 50%,var(--secondary) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+        .subheadline{font-size:1.1rem;color:rgba(255,255,255,0.7);max-width:720px;margin:0 auto 2rem;line-height:1.7}
+        .app-icon{width:96px;height:96px;border-radius:20px;display:block;margin:0 auto 1.5rem;box-shadow:0 10px 30px rgba(0,0,0,0.4)}
+        .sections{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.5rem;margin:2rem 0}
+        .section-card{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);border-radius:16px;padding:1.75rem;backdrop-filter:blur(10px);transition:all 0.3s ease}
+        .section-card:hover{border-color:rgba(0,240,255,0.3);transform:translateY(-4px);box-shadow:0 18px 36px rgba(0,0,0,0.3)}
+        .section-title{font-family:'Space Grotesk',sans-serif;font-size:1.2rem;font-weight:600;margin-bottom:0.6rem;color:#fff}
+        .section-desc{color:rgba(255,255,255,0.6);line-height:1.6;font-size:0.95rem}
+        .pill{display:inline-block;margin-top:0.75rem;padding:0.4rem 0.8rem;border:1px solid rgba(0,240,255,0.3);border-radius:999px;color:var(--primary);font-size:0.85rem}
+        .link{color:var(--primary);text-decoration:none}
+        .link:hover{text-decoration:underline}
+        footer{text-align:center;padding:3rem 0;border-top:1px solid rgba(255,255,255,0.05);margin-top:3rem}
+        .footer-legal{font-size:0.75rem;color:rgba(255,255,255,0.25)}
+    </style>
+</head>
+<body>
+    <div class="bg-container">
+        <div class="grid-overlay"></div>
+        <div class="glow-orb orb-1"></div>
+        <div class="glow-orb orb-2"></div>
+        <div class="glow-orb orb-3"></div>
+    </div>
+    <div class="container">
+        <header>
+            <img src="context-app-icon.png" alt="Context app icon" class="app-icon">
+            <h1 class="headline">Context — Smart Task Manager</h1>
+            <p class="subheadline">Context is a native Apple‑ecosystem productivity app that surfaces the right tasks based on location, time, and energy — so you do less list‑managing and more doing.</p>
+        </header>
+
+        <div class="sections">
+            <div class="section-card">
+                <h2 class="section-title">Location‑Aware Orchestration</h2>
+                <p class="section-desc">Tasks automatically surface based on where you are and what’s actionable, using configurable geofences and lookahead intelligence.</p>
+            </div>
+            <div class="section-card">
+                <h2 class="section-title">Natural‑Language Capture</h2>
+                <p class="section-desc">Capture tasks in plain language. Context parses dates, priority, energy, and location on‑device — no cloud dependency.</p>
+            </div>
+            <div class="section-card">
+                <h2 class="section-title">Privacy‑First</h2>
+                <p class="section-desc">On‑device NLP and local processing. No data collection, no third‑party analytics, and private iCloud sync.</p>
+            </div>
+            <div class="section-card">
+                <h2 class="section-title">Full Apple Ecosystem</h2>
+                <p class="section-desc">macOS, iOS, iPadOS, and watchOS with CloudKit sync and a consistent native experience.</p>
+            </div>
+        </div>
+
+        <div class="sections">
+            <div class="section-card">
+                <h2 class="section-title">Stage</h2>
+                <p class="section-desc">Active development with a targeted public launch in Q2 2026.</p>
+                <span class="pill">Launching Q2 2026</span>
+            </div>
+            <div class="section-card">
+                <h2 class="section-title">Positioning</h2>
+                <p class="section-desc">Power of OmniFocus, simplicity closer to Things 3, with location intelligence nobody offers.</p>
+            </div>
+            <div class="section-card">
+                <h2 class="section-title">Back to Studio</h2>
+                <p class="section-desc"><a class="link" href="index.html">This Just Dropped home</a></p>
+            </div>
+        </div>
+
+        <footer>
+            <p class="footer-legal">© 2025 JGLZ Ventures LLC. All rights reserved.</p>
+        </footer>
+    </div>
+</body>
+</html>
